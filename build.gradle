@@ -1,0 +1,30 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+        springFrameWorkVersion = '5.1.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+
+}
+apply plugin: 'java'
+sourceCompatibility = JavaVersion.VERSION_11
+group 'org.oleggalimov'
+version '1.0-SNAPSHOT'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: "org.springframework.boot", name:"spring-boot-starter-web", version: springBootVersion
+    compile("org.springframework.boot:spring-boot-starter-activemq:$springBootVersion")
+    compile group: "org.springframework", name:"spring-jms", version: springFrameWorkVersion
+    compile("org.apache.activemq:activemq-broker:5.15.9")
+}
